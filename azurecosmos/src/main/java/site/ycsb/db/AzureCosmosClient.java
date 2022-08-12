@@ -374,13 +374,16 @@ public class AzureCosmosClient extends DB {
       CosmosPagedIterable<ObjectNode> pagedIterable = container.queryItems(querySpec, queryOptions, ObjectNode.class);
       Iterator<FeedResponse<ObjectNode>> pageIterator = pagedIterable
           .iterableByPage(AzureCosmosClient.preferredPageSize).iterator();
+      boolean isDiagnosticsBreachedFromAnyPage = false;
       Instant start = Instant.now();
       while (pageIterator.hasNext()) {
         FeedResponse<ObjectNode> feedResponse = pageIterator.next();
         List<ObjectNode> pageDocs = feedResponse.getResults();
         Instant end = Instant.now();
         if (diagnosticsLatencyThresholdInMS > 0 &&
-            Duration.between(start, end).toMillis() > diagnosticsLatencyThresholdInMS) {
+            ((Duration.between(start, end).toMillis() > diagnosticsLatencyThresholdInMS) ||
+                isDiagnosticsBreachedFromAnyPage)) {
+          isDiagnosticsBreachedFromAnyPage = true;
           LOGGER.warn(QUERY_DIAGNOSTIC, feedResponse.getCosmosDiagnostics().toString());
         }
         for (ObjectNode doc : pageDocs) {
