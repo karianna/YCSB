@@ -410,7 +410,7 @@ public class AzureCosmosClient extends DB {
     try {
       long st = System.nanoTime();
       CosmosQueryRequestOptions queryOptions = new CosmosQueryRequestOptions();
-      queryOptions.setMaxDegreeOfParallelism(AzureCosmosClient.maxDegreeOfParallelism);
+      //queryOptions.setMaxDegreeOfParallelism(AzureCosmosClient.maxDegreeOfParallelism);
       queryOptions.setMaxBufferedItemCount(AzureCosmosClient.maxBufferedItemCount);
 
       CosmosContainer container = AzureCosmosClient.containerCache.get(table);
