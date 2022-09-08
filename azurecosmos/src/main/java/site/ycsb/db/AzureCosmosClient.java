@@ -27,6 +27,7 @@ import com.azure.cosmos.GatewayConnectionConfig;
 import com.azure.cosmos.ThrottlingRetryOptions;
 import com.azure.cosmos.models.CosmosItemRequestOptions;
 import com.azure.cosmos.models.CosmosItemResponse;
+import com.azure.cosmos.models.CosmosPatchOperations;
 import com.azure.cosmos.models.CosmosQueryRequestOptions;
 import com.azure.cosmos.models.FeedResponse;
 import com.azure.cosmos.models.PartitionKey;
@@ -482,28 +483,18 @@ public class AzureCosmosClient extends DB {
         container = AzureCosmosClient.database.getContainer(table);
         AzureCosmosClient.containerCache.put(table, container);
       }
-
-      CosmosItemResponse<ObjectNode> response = container.readItem(key, new PartitionKey(key), ObjectNode.class);
-      ObjectNode node = response.getItem();
-
+      
+      CosmosPatchOperations cosmosPatchOperations = CosmosPatchOperations.create();
       for (Entry<String, ByteIterator> pair : values.entrySet()) {
-        node.put(pair.getKey(), pair.getValue().toString());
+        cosmosPatchOperations.replace("/" + pair.getKey(), pair.getValue().toString());
       }
 
-      CosmosItemRequestOptions requestOptions = new CosmosItemRequestOptions();
       PartitionKey pk = new PartitionKey(key);
-      container.replaceItem(node, key, pk, requestOptions);
-//      CosmosPatchOperations cosmosPatchOperations = CosmosPatchOperations.create();
-//      for (Entry<String, ByteIterator> pair : values.entrySet()) {
-//        cosmosPatchOperations.replace("/" + pair.getKey(), pair.getValue().toString());
-//      }
-//
-//      PartitionKey pk = new PartitionKey(key);
-//      CosmosItemResponse<ObjectNode> response = container.patchItem(key, pk, cosmosPatchOperations, ObjectNode.class);
-//      if (diagnosticsLatencyThresholdInMS > 0 &&
-//          response.getDiagnostics().getDuration().compareTo(Duration.ofMillis(diagnosticsLatencyThresholdInMS)) > 0) {
-//        LOGGER.warn(PATCH_DIAGNOSTIC, response.getDiagnostics().toString());
-//      }
+      CosmosItemResponse<ObjectNode> response = container.patchItem(key, pk, cosmosPatchOperations, ObjectNode.class);
+      if (diagnosticsLatencyThresholdInMS > 0 &&
+          response.getDiagnostics().getDuration().compareTo(Duration.ofMillis(diagnosticsLatencyThresholdInMS)) > 0) {
+        LOGGER.warn(PATCH_DIAGNOSTIC, response.getDiagnostics().toString());
+      }
 
       if (updateSuccessLatencyTimer != null) {
         long en = System.nanoTime();
