@@ -131,6 +131,7 @@ public class AzureCosmosClient extends DB {
 
   @Override
   public void init() throws DBException {
+    System.setProperty("COSMOS.REPLICA_ADDRESS_VALIDATION_ENABLED", "true");
     INIT_COUNT.incrementAndGet();
 
     synchronized (INIT_COUNT) {
@@ -204,6 +205,7 @@ public class AzureCosmosClient extends DB {
       directConnectionConfig.setIdleConnectionTimeout(Duration.ofSeconds(directIdleConnectionTimeoutInSeconds));
     }
 
+    directConnectionConfig.setIdleEndpointTimeout(Duration.ofHours(24));
     // Gateway connection config options.
     GatewayConnectionConfig gatewayConnectionConfig = new GatewayConnectionConfig();
 
