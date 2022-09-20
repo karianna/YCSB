@@ -93,6 +93,12 @@ public class AzureCosmosClient extends DB {
   private static final Marker PATCH_DIAGNOSTIC = MarkerFactory.getMarker("PATCH_DIAGNOSTIC");
   private static final Marker DELETE_DIAGNOSTIC = MarkerFactory.getMarker("DELETE_DIAGNOSTIC");
   private static final Marker QUERY_DIAGNOSTIC = MarkerFactory.getMarker("QUERY_DIAGNOSTIC");
+  private static final Marker CREATE_EXCEPTION = MarkerFactory.getMarker("CREATE_EXCEPTION");
+  private static final Marker READ_EXCEPTION = MarkerFactory.getMarker("READ_EXCEPTION");
+  private static final Marker PATCH_EXCEPTION = MarkerFactory.getMarker("PATCH_EXCEPTION");
+  private static final Marker DELETE_EXCEPTION = MarkerFactory.getMarker("DELETE_DIAGNOSTIC");
+  private static final Marker QUERY_EXCEPTION = MarkerFactory.getMarker("QUERY_EXCEPTION");
+
 
   /**
    * Count the number of times initialized to teardown on the last
@@ -387,7 +393,7 @@ public class AzureCosmosClient extends DB {
       if (!AzureCosmosClient.includeExceptionStackInLog) {
         e = null;
       }
-      LOGGER.error("Failed to read key {} in collection {} in database {} statusCode {}", key, table,
+      LOGGER.error(READ_EXCEPTION, "Failed to read key {} in collection {} in database {} statusCode {}", key, table,
           AzureCosmosClient.databaseName, statusCode, e);
       if (readFailureCounter != null) {
         readFailureCounter.increment();
@@ -467,8 +473,8 @@ public class AzureCosmosClient extends DB {
       if (!AzureCosmosClient.includeExceptionStackInLog) {
         e = null;
       }
-      LOGGER.error("Failed to query key {} from collection {} in database {} statusCode {}", startkey, table,
-          AzureCosmosClient.databaseName, statusCode, e);
+      LOGGER.error(QUERY_EXCEPTION, "Failed to query key {} from collection {} in database {} statusCode {}",
+          startkey, table, AzureCosmosClient.databaseName, statusCode, e);
     }
     if (scanFailureCounter != null) {
       scanFailureCounter.increment();
@@ -520,7 +526,7 @@ public class AzureCosmosClient extends DB {
       if (!AzureCosmosClient.includeExceptionStackInLog) {
         e = null;
       }
-      LOGGER.error("Failed to update key {} to collection {} in database {} statusCode {}", key, table,
+      LOGGER.error(PATCH_EXCEPTION, "Failed to update key {} to collection {} in database {} statusCode {}", key, table,
           AzureCosmosClient.databaseName, statusCode, e);
     }
 
@@ -583,8 +589,8 @@ public class AzureCosmosClient extends DB {
       if (!AzureCosmosClient.includeExceptionStackInLog) {
         e = null;
       }
-      LOGGER.error("Failed to insert key {} to collection {} in database {} statusCode {}", key, table,
-          AzureCosmosClient.databaseName, statusCode, e);
+      LOGGER.error(CREATE_EXCEPTION, "Failed to insert key {} to collection {} in database {} statusCode {}", key,
+          table, AzureCosmosClient.databaseName, statusCode, e);
     }
     if (writeFailureCounter != null) {
       writeFailureCounter.increment();
@@ -617,7 +623,7 @@ public class AzureCosmosClient extends DB {
       if (!AzureCosmosClient.includeExceptionStackInLog) {
         e = null;
       }
-      LOGGER.error("Failed to delete key {} in collection {} database {} statusCode {}", key, table,
+      LOGGER.error(DELETE_EXCEPTION, "Failed to delete key {} in collection {} database {} statusCode {}", key, table,
           AzureCosmosClient.databaseName, statusCode, e);
     }
     return Status.ERROR;
