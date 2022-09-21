@@ -508,7 +508,7 @@ public class AzureCosmosClient extends DB {
         updateSuccessLatencyTimer.record(latency, TimeUnit.MICROSECONDS);
         updateSuccessCounter.increment();
       }
-      return Status.OK;
+      return Status.OK
     } catch (CosmosException e) {
       int statusCode = e.getStatusCode();
       if (!AzureCosmosClient.includeExceptionStackInLog) {
