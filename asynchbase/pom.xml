@@ -70,7 +70,11 @@ LICENSE file.
     <dependency>
       <groupId>org.apache.zookeeper</groupId>
       <artifactId>zookeeper</artifactId>
+<<<<<<< HEAD
       <version>3.8.1</version>
+=======
+      <version>3.8.0</version>
+>>>>>>> c2c309fc (Update asynchbase)
       <exclusions>
         <exclusion>
           <groupId>jline</groupId>
