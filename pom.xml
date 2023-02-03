@@ -157,7 +157,7 @@ LICENSE file.
     <asynchbase.version>1.8.2</asynchbase.version>
     <!-- TODO 4.40.0 -->
     <azurecosmos.version>4.39.0</azurecosmos.version>
-    <azurestorage.version>4.0.0</azurestorage.version>
+    <azurestorage.version>8.6.6</azurestorage.version>
     <cassandra.cql.version>3.0.0</cassandra.cql.version>
     <cloudspanner.version>2.0.1</cloudspanner.version>
     <couchbase.version>1.4.10</couchbase.version>
