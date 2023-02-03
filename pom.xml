@@ -158,6 +158,7 @@ LICENSE file.
     <!-- TODO 4.40.0 -->
     <azurecosmos.version>4.39.0</azurecosmos.version>
     <azurestorage.version>8.6.6</azurestorage.version>
+    <!-- TODO Move to 4.0.x -->
     <cassandra.cql.version>3.0.0</cassandra.cql.version>
     <cloudspanner.version>2.0.1</cloudspanner.version>
     <couchbase.version>1.4.10</couchbase.version>
