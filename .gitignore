@@ -23,3 +23,8 @@ output*
 # ignore standard Mac OS X files/dirs
 .DS_Store
 /differentbin/
+
+.java-version
+ignite/ignite-binding*.log
+ignite/ignite-binding*.log.gz
+ignite/ignite/
