@@ -27,12 +27,14 @@
     <skipJDK10Tests>true</skipJDK10Tests>
     <skipJDK11Tests>true</skipJDK11Tests>
 
-    <tomcat.version>8.0.28</tomcat.version>
+    <!-- Maybe Tomcat 9+ one day -->
+    <tomcat.version>8.5.91</tomcat.version>
     <jersey.version>2.6</jersey.version>
-    <httpclient.version>4.5.1</httpclient.version>
-    <httpcore.version>4.4.4</httpcore.version>
-    <junit.version>4.12</junit.version>
-    <system-rules.version>1.16.0</system-rules.version>
+    <httpclient.version>4.5.14</httpclient.version>
+    <httpcore.version>4.4.16</httpcore.version>
+    <!-- Maybe Junit 5+ one day -->
+    <junit.version>4.13.2</junit.version>
+    <system-rules.version>1.19.0</system-rules.version>
   </properties>
 
   <dependencies>
