@@ -64,7 +64,7 @@ For general support, please use the mailing list hosted (of course) with Yahoo g
 
 ## Minimal Java Version
 
-YCSB is designed to be built and run with Java 8.
+YCSB is designed to be built and run with Java 8 but you can use new versions of Java to build as long as you target the 8 runtime.
 
 ## Building
 
