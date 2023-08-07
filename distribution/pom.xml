@@ -251,11 +251,14 @@ LICENSE file.
       <artifactId>scylla-binding</artifactId>
       <version>${project.version}</version>
     </dependency>
+    <!-- Azure is not able to build this module, see root pom.xml for details -->
+    <!--
     <dependency>
       <groupId>site.ycsb</groupId>
       <artifactId>solr7-binding</artifactId>
       <version>${project.version}</version>
     </dependency>
+    -->
     <dependency>
       <groupId>site.ycsb</groupId>
       <artifactId>tarantool-binding</artifactId>
