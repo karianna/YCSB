@@ -157,7 +157,7 @@ LICENSE file.
     <!-- datastore binding versions, lex sorted -->
     <accumulo.1.9.version>1.9.3</accumulo.1.9.version>
     <accumulo.1.10.version>1.10.3</accumulo.1.10.version>
-    <!-- Add Accumulo 2.x adt some stage -->
+    <!-- Add Accumulo 2.x at some stage -->
     <aerospike.version>6.1.11</aerospike.version>
     <arangodb.version>6.20.0</arangodb.version>
     <asynchbase.version>1.8.2</asynchbase.version>
