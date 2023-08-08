@@ -3,16 +3,18 @@
 This repository is a fork of the original YCSB repository in order to support Azure workloads. We're working with the 
 upstream YCSB team to get these changes merged into the main repository.
 
-This fork contains the following updates to Cosmos DB binding:
+This fork contains updates to all the projects, updating dependencies for security and stability fixes.
 
-- Cosmos DB Java SDK 4.41.0
+We also made deeper changes for to the Cosmos DB binding:
+
+- Updated Cosmos DB Java SDK to latest version
 - Upgrade to Log4J 2
 - Client diagnostic and exception logging to separate files
 - Micrometer integration
 
 Additionally, the “operationcount” type in YCSB core, has been changed to long from int to allow for large “operationcount” value.
 
-We will keep this fork up to date with the upstream YCSB repository and push changes from here.
+We will attempt to keep this fork up to date with the upstream YCSB repository and push changes from here.
 
 ## Contributing
 
