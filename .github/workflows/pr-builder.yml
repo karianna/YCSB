@@ -26,4 +26,4 @@ jobs:
     - name: Build with Maven Wrapper
       run: ./mvnw clean install site
       env:
-        MAVEN_OPTS: -Xmx2g
+        MAVEN_OPTS: -Xmx4g
