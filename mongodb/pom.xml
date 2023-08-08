@@ -37,11 +37,6 @@ LICENSE file.
       <version>${mongodb.version}</version>
     </dependency>
     <dependency>
-      <groupId>org.mongodb</groupId>
-      <artifactId>mongodb-driver-reactivestreams</artifactId>
-      <version>4.10.1</version>
-    </dependency>
-    <dependency>
       <groupId>com.allanbank</groupId>
       <artifactId>mongodb-async-driver</artifactId>
       <version>${mongodb.async.version}</version>
